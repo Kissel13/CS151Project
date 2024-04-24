@@ -20,7 +20,7 @@ public class Main {
         System.out.println();
 
         while (true) {
-            System.out.println("Would You Like To Create a Plalist?");
+            System.out.println("Would You Like To Create a Playlist?");
             String input = scnr.next();
             if (input.equals("Yes") || input.equals("yes")) {
                 System.out.println();
