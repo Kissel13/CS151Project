@@ -30,6 +30,10 @@ public class Song {
         this.songName = sngName;
     }
 
+    public String getSongName(){
+        return this.songName;
+    }
+
     public void setArtist(String artist) {
         this.artist = artist;
     }
