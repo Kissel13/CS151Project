@@ -7,18 +7,33 @@ public class Main {
         Scanner scnr = new Scanner(System.in);
         AccountManager manager = new AccountManager();
         Catalog catalog = new Catalog();
-        Boolean lock = true;
+        boolean loginLock = true;
+        Boolean signupLock = true;
 
         System.out.println("Hello! Would You Like To Login or SignUp?");
         switch (scnr.next()) {
             case "Login":
-                System.out.print("Username: ");
-                String userName = scnr.next();
-                System.out.print("Password: ");
-                String passWord = scnr.next();
-                Account login = new Account(userName, passWord);
-                // Search AccountManager for match on username
-                // Check if password matches
+                while (loginLock) {
+                    System.out.print("Username: ");
+                    String userName = scnr.next();
+                    System.out.print("Password: ");
+                    String passWord = scnr.next();
+                    Account login = new Account(userName, passWord);
+                    // Search AccountManager for match on username
+                    if (manager.accountVerify(login)) {
+                        // Check if password matches
+                        if (manager.passwordVerify(login)) {
+                            System.out.println("Welcome Back");
+                            loginLock = false;
+                        }
+                        else {
+                            System.out.println("Incorrect Password");
+                        }
+                    }
+                    else {
+                        System.out.println("Incorrect Username");
+                    }
+                }
                 break;
                 
             case "SignUp":
@@ -26,7 +41,7 @@ public class Main {
                 System.out.print("Username: ");
                 String newUser = scnr.next();
                 System.out.println();
-                while (lock) {
+                while (signupLock) {
                     System.out.println("Password must but at least 6 characters long.");
                     System.out.print("Password: ");
                     String newPass = scnr.next();
@@ -35,7 +50,7 @@ public class Main {
                         Account user = new Account(newUser, newPass);
                         manager.addAccount(user);
                         System.out.println("Thank You For Choosing MusicCatalog");
-                        lock = false;
+                        signupLock = false;
                     }
                     else {
                         System.out.println("Error: Please Enter A New Password.");
@@ -75,7 +90,7 @@ public class Main {
             }
             else if (input.equals("exit") || input.equals("Exit")) {
                 System.out.println("Would You Like To Logout?");
-                if (scnr.next().equals("Yes") || scnr.next().equals("yes")) {
+                if (scnr.next().equals("yes") || scnr.next().equals("Yes")) {
             	    System.out.println("Application Closed");
                     return;
                 }

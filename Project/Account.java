@@ -27,6 +27,18 @@ public class Account {
 		this.playName = playName;
 	}
 
+    public String getAccountName() {
+        return this.accountName;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public String getPlayName() {
+        return this.playName;
+    }
+
     public void createPlaylist(Playlist playlist) {
         this.playlist = playlist;
     }
