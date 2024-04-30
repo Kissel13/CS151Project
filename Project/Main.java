@@ -78,7 +78,8 @@ public class Main {
                     case "Create" :
                         System.out.println("Plese Enter Name of Playlist: ");
                         input = scnr.next();
-                        //user.setPlayName(input);
+                        //Playlist playlist = new Playlist(input);
+                        //user.createPlaylist(playlist);
         
                         System.out.println();
                         break;
