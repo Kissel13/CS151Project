@@ -104,14 +104,14 @@ public class Main {
                 }
             }
             else if (input.equals("exit")) {
-                System.out.println("Would You Like To Logout? : Yes/No");
+                System.out.println("Would You Like To Exit? : Yes/No");
                 String exitKey = scnr.next().toLowerCase();
                 if (exitKey.equals("yes")) {
             	    System.out.println("Application Closed");
                     return;
                 }
                 else if (exitKey.equals("no")) {
-                    
+                    System.out.println("Exit Canceled");
                 }
                 else {
                     System.out.println("Error: Input Not Accepted");
