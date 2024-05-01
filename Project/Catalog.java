@@ -31,6 +31,10 @@ public class Catalog {
         songCatalog.remove(song);
     }
 
+    public void displayGenre() {
+
+    }
+    
     public void displayCatalog() {
         for (int i = 0; i < songCatalog.size(); i++) {
             System.out.println(songCatalog.get(i).toString());

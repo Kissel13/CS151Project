@@ -10,9 +10,9 @@ public class Main {
         boolean loginLock = true;
         Boolean signupLock = true;
 
-        System.out.println("Hello! Would You Like To Login or SignUp?");
-        switch (scnr.next()) {
-            case "Login":
+        System.out.println("Hello! Would You Like To Login or SignUp? : Login/SignUp");
+        switch (scnr.next().toLowerCase()) {
+            case "login":
                 while (loginLock) {
                     System.out.print("Username: ");
                     String userName = scnr.next();
@@ -36,7 +36,7 @@ public class Main {
                 }
                 break;
                 
-            case "SignUp":
+            case "signup":
                 System.out.println("Please Enter A Name and Password:");
                 System.out.print("Username: ");
                 String newUser = scnr.next();
@@ -64,39 +64,57 @@ public class Main {
         System.out.println();
 
         while (true) {
-            System.out.println("Please Enter What Would You Like To Access: Catalog, Playlist, Exit");
-            String input = scnr.next();
-            if (input.equals("catalog") || input.equals("Catalog")) {
-                System.out.println();
-                System.out.println("MusicCatalog Songs: ");
-                System.out.println();
-                catalog.displayCatalog();
+            System.out.println("Please Enter What Would You Like To Access: Catalog/Playlist/Exit");
+            String input = scnr.next().toLowerCase();
+            if (input.equals("catalog")) {
+                System.out.println("Would You Like To Access A Catalog Genre or Full? : Genre/Full");
+                String catalogInput = scnr.next().toLowerCase();
+                if (catalogInput.equals("genre")) {
+                    System.out.println();
+                    System.out.println("What Genre Would You Like To View?");
+                    
+                    System.out.println(" Songs: ");
+                    System.out.println();
+                    catalog.displayCatalog();
+                    System.out.println();
+                } else if (catalogInput.equals("full")) {
+                    System.out.println();
+                    System.out.println("MusicCatalog Songs: ");
+                    System.out.println();
+                    catalog.displayCatalog();
+                    System.out.println();
+                }
+                else {
+                    System.out.println("Error: Input Not Accepted");
+                }
             }
-            else if (input.equals("playlist") || input.equals("Playlist")) {
-                System.out.println("Would You Like To Create, View, or Return?");
-                switch (scnr.next()) {
-                    case "Create" :
+            else if (input.equals("playlist")) {
+                System.out.println("Would You Like To Create, View, or Return? : Create/View/Return");
+                switch (scnr.next().toLowerCase()) {
+                    case "create" :
                         System.out.println("Plese Enter Name of Playlist: ");
                         input = scnr.next();
-                        //Playlist playlist = new Playlist(input);
-                        //user.createPlaylist(playlist);
         
                         System.out.println();
                         break;
-                    case "View" :
-                    case "Return" :
+                    case "view" :
+                    case "return" :
                         System.out.println();
                         break;
                 }
             }
-            else if (input.equals("exit") || input.equals("Exit")) {
-                System.out.println("Would You Like To Logout?");
-                if (scnr.next().equals("yes") || scnr.next().equals("Yes")) {
+            else if (input.equals("exit")) {
+                System.out.println("Would You Like To Logout? : Yes/No");
+                String exitKey = scnr.next().toLowerCase();
+                if (exitKey.equals("yes")) {
             	    System.out.println("Application Closed");
                     return;
                 }
-                else if (scnr.next().equals("no") || scnr.next().equals("No")) {
+                else if (exitKey.equals("no")) {
                     
+                }
+                else {
+                    System.out.println("Error: Input Not Accepted");
                 }
             }
             else {
