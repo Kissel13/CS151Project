@@ -72,11 +72,14 @@ public class Main {
                 if (catalogInput.equals("genre")) {
                     System.out.println();
                     System.out.println("What Genre Would You Like To View?");
+                    catalog.displayGenre();
+                    System.out.println();
+                    //Take user Input 
+                    System.out.println("Genre: ");
+                    String genreInput = scnr.next().toLowerCase();
+                    //Print all songs that match genre
+                    catalog.displayGenreCatalog(genreInput);
                     
-                    System.out.println(" Songs: ");
-                    System.out.println();
-                    catalog.displayCatalog();
-                    System.out.println();
                 } else if (catalogInput.equals("full")) {
                     System.out.println();
                     System.out.println("MusicCatalog Songs: ");
@@ -93,11 +96,19 @@ public class Main {
                 switch (scnr.next().toLowerCase()) {
                     case "create" :
                         System.out.println("Plese Enter Name of Playlist: ");
-                        input = scnr.next();
-        
+                        String name = scnr.next();
+                        Playlist userList = new Playlist(name);
                         System.out.println();
+                        System.out.println("What Songs Would You Like To Add?");
+                        //Make way for users to select songs to add to their playlists
+                        //Save user playlist to file
+
                         break;
                     case "view" :
+                        //Read users playlist from playlist file
+                        //Give users option to play a song, add a song, remove a song
+                        //update users playlist file
+
                     case "return" :
                         System.out.println();
                         break;

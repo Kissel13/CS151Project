@@ -42,6 +42,10 @@ public class Song {
         this.genre = genre;
     }
 
+    public String getGenre() {
+        return this.genre;
+    }
+
     public void setAlbum(String album) {
         this.album = album;
     }

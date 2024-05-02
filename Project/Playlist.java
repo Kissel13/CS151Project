@@ -2,7 +2,7 @@ package Project;
 
 import java.util.ArrayList;
 
-public class Playlist extends Catalog {
+public class Playlist implements SongList {
 
     private String playListName;
     private ArrayList<Song> listSongs;
@@ -19,11 +19,13 @@ public class Playlist extends Catalog {
 
     @Override
     public void addSong(Song song){
+        //add given song to file containing user playlist
         listSongs.add(song);
     }
 
     @Override
     public void removeSong(Song song){
+        //remove given song 
         listSongs.remove(song);
     }
 
