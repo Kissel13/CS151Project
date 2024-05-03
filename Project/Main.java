@@ -143,9 +143,14 @@ public class Main extends Playlist{
                             System.out.println("Would You Like To Play, Add, Remove, or Return? : Play/Add/Remove/Return");
                             String userAction = scnr.next();
                             switch (userAction.toLowerCase()) {
-                                
+                                case "play" :
+                                case "add" :
+                                case "remove" :
+                                case "return" :
+                                    userLock = false;
+                                    System.out.println();
+                                    break;
                             }
-                            //update users playlist file
                         }
                     case "return" :
                         System.out.println();
