@@ -49,7 +49,7 @@ public class Catalog implements SongList {
     
     public void displayGenreCatalog(String genreInput) {
         for (int i = 0; i < songCatalog.size(); i++) {
-            if (songCatalog.get(i).getGenre().equals(genreInput)) {
+            if (songCatalog.get(i).getGenre().equalsIgnoreCase(genreInput)) {
                 System.out.println(songCatalog.get(i).toString());
             }
         }
