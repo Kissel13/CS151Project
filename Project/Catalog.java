@@ -3,7 +3,7 @@ package Project;
 import java.util.ArrayList;
 
 public class Catalog implements SongList {
-    private ArrayList<Song> songCatalog;
+    protected ArrayList<Song> songCatalog;
     private ArrayList<String> genreList;
 
     Catalog() {
@@ -31,13 +31,13 @@ public class Catalog implements SongList {
     }
 
     @Override
-    public void addSong(Song song) {
-        songCatalog.add(song);
+    public void addSong(String song) {
+       //songCatalog.add(song);
     }
 
     @Override
-    public void removeSong(Song song) {
-        songCatalog.remove(song);
+    public void removeSong(String song) {
+        //songCatalog.remove(song);
     }
 
     public void displayGenre() {
