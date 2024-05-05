@@ -105,7 +105,7 @@ public class Main extends Playlist{
                         System.out.println("Plese Enter Name of Playlist: ");
                         String name = scnr.next();
                         Playlist userList = new Playlist(name);
-                        currentUser.setPlayName(name);
+                        currentUser.createPlaylist(userList);
                         System.out.println();
                         while (playListLock) {
                             System.out.println("Actions : Add/Remove/Return");

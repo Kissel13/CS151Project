@@ -3,7 +3,6 @@ package Project;
 public class Account {
     private String accountName;
     private String password;
-    private String playName;
     private Playlist playlist;
 
     Account() {
@@ -23,20 +22,12 @@ public class Account {
         this.password = password;
     }
 
-    public void setPlayName(String playName) {
-		this.playName = playName;
-	}
-
     public String getAccountName() {
         return this.accountName;
     }
 
     public String getPassword() {
         return this.password;
-    }
-
-    public String getPlayName() {
-        return this.playName;
     }
 
     public void createPlaylist(Playlist playlist) {

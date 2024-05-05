@@ -1,3 +1,4 @@
 user01 password01
 kissel13 music1
 hankhill 123456
+newUser01 newPassword

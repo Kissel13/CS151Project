@@ -14,7 +14,7 @@ public class AccountManager {
         accountManager = new ArrayList<Account>();
     }
 
-    public Boolean accountVerify(Account user) {
+    public boolean accountVerify(Account user) {
         // check if account exists in account file
         try {
             FileReader fileReader = new FileReader("account.txt");
@@ -37,7 +37,7 @@ public class AccountManager {
         return false;
     }
 
-    public Boolean passwordVerify(Account user) {
+    public boolean passwordVerify(Account user) {
         // check if password matches account in file
         try {
             FileReader fileReader = new FileReader("account.txt");
