@@ -1,14 +1,16 @@
 package Project;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Catalog implements SongList {
+public class Catalog {
     protected ArrayList<Song> songCatalog;
-    private ArrayList<String> genreList;
+    private Set<String> genreList;
 
     Catalog() {
         songCatalog = new ArrayList<Song>();
-        genreList = new ArrayList<String>();
+        genreList = new HashSet<String>();
     }
 
     public void createCatalog() {
@@ -30,20 +32,19 @@ public class Catalog implements SongList {
 	    songCatalog.add(song5);
     }
 
-    @Override
-    public void addSong(String song) {
-       //songCatalog.add(song);
+    public Song getSongByName(String songName) {
+        for (Song song : songCatalog) {
+            if (song.getSongName().equalsIgnoreCase(songName)) {
+                return song;
+            }
+        }
+        return null;
     }
-
-    @Override
-    public void removeSong(String song) {
-        //songCatalog.remove(song);
-    }
-
+    
     public void displayGenre() {
         // If genre was already printed, do not reprint
-        for (int i = 0; i < songCatalog.size(); i++) {
-          System.out.println(genreList.get(i));
+        for (String genre : genreList) {
+            System.out.println(genre);
         }
     }
     

@@ -2,17 +2,15 @@ package Project;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Playlist extends Catalog implements SongList {
+public class Playlist implements SongList {
 
     private String playListName;
     private ArrayList<Song> listSongs;
-    private File playlistFile;
 
     Playlist() {
         playListName = "";
@@ -22,40 +20,36 @@ public class Playlist extends Catalog implements SongList {
     Playlist(String name){
         playListName = name;
         listSongs = new ArrayList<Song>();
-        playlistFile = new File(name);
     }
 
-    @Override
-    public void addSong(String song) {
-        Song temp = new Song();
-        Song added = new Song();
-        for (int i = 0; i < songCatalog.size(); i++) {
-            temp = songCatalog.get(i);
-            if (temp.getSongName().trim().equalsIgnoreCase(song.trim())) {
-                System.out.println("If Condition");
-                added = temp;
-                break;
+    public Song getSongByName(String songName) {
+        for (Song song : listSongs) {
+            if (song.getSongName().equalsIgnoreCase(songName)) {
+                return song;
             }
         }
-        //add given song to file containing user playlist
-        try {
-            FileWriter fileWriter = new FileWriter(playlistFile,true);
-            BufferedWriter writer = new BufferedWriter(fileWriter);    
+        return null;
+    }
+    @Override
+    public boolean addSong(Song song) {
+        if (getSongByName(song.getSongName()) != null) {
+            return false;
+        }
 
-            writer.write(added.toString());
-            writer.newLine();
-            writer.close();            
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        listSongs.add(added);
+        listSongs.add(song);
+        saveFile();
+        return true;
     }
 
     @Override
-    public void removeSong(String song){
-        //remove given song 
-        listSongs.remove(song);
+    public boolean removeSong(String songName){
+        Song find = getSongByName(songName);
+        if (find != null) {
+            listSongs.remove(find);
+            saveFile();
+            return true;
+        }
+        return false;
     }
 
     public void setPlaylistName(String newName){
@@ -66,32 +60,51 @@ public class Playlist extends Catalog implements SongList {
         return playListName;
     }
 
-    public void playSong(String songTitle)
-    {
-        for (int i = 0; i < listSongs.size(); i++)
-        {
-            if (listSongs.get(i).getSongName() == songTitle)
-            {
-                System.out.println("Now playing: " + listSongs.get(i).getSongName());
-                break;
-            }
-            else if (i == listSongs.size() - 1)
-                System.out.println("Song not found");
+    public void playSong(String songTitle) {
+        Song find = getSongByName(songTitle);
+        if (find != null) {
+            System.out.println("Now playing: " + songTitle);
+            System.out.println();
+        } else {
+            System.out.println("Song not found");
+            System.out.println();
         }
     }
 
-    public static void displayPlaylist(String playlist) {
+    public void display() {
+        for (Song song : listSongs) {
+            System.out.println(song);
+        }
+    }
+
+    public static Playlist loadFromFile(String playListName) {
+        Playlist playlist = new Playlist(playListName);
         try {
-            FileReader fileReader = new FileReader(playlist+".txt");
+            FileReader fileReader = new FileReader(playListName + ".txt");
             BufferedReader reader = new BufferedReader(fileReader);
 
             String line = reader.readLine();
-            while (line != null) {
-                System.out.println(line);
+            while (line != null && !line.isEmpty()) {
+                String[] part = line.split(", ");
+                playlist.addSong(new Song(part[0], part[1], part[3], part[2], Double.parseDouble(part[4])));
                 line = reader.readLine();
             }
+        } catch (IOException e){
+            e.printStackTrace();
         }
-        catch (IOException e){
+        return playlist;
+    }
+
+    private void saveFile() {
+        try {
+            FileWriter fileWriter = new FileWriter(playListName + ".txt");
+            BufferedWriter writer = new BufferedWriter(fileWriter);
+            for (Song song : listSongs) {
+                writer.write(song.toString());
+                writer.newLine();
+            }
+            writer.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
