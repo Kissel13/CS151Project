@@ -69,6 +69,7 @@ public class Main extends Playlist{
             
             default : 
                 System.out.println("Invalid input");
+                scnr.close();
                 return;
         }
 

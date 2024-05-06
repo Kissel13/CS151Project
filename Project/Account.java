@@ -12,6 +12,7 @@ public class Account {
     Account(String userName, String passWord) {
         this.accountName = userName;
         this.password = passWord;
+        playlist = new Playlist();
     }
 
     public void setAccountName(String name) {

@@ -89,6 +89,7 @@ public class Playlist implements SongList {
                 playlist.addSong(new Song(part[0], part[1], part[3], part[2], Double.parseDouble(part[4])));
                 line = reader.readLine();
             }
+            reader.close();
         } catch (IOException e){
             e.printStackTrace();
         }
