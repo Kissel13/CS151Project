@@ -2,7 +2,6 @@ package Project;
 
 public interface SongList {
 
-    public boolean addSong(Song Song);
+    public Song getSongByName(String songName);
 
-    public boolean removeSong(String Song);
 }

@@ -30,7 +30,7 @@ public class Playlist implements SongList {
         }
         return null;
     }
-    @Override
+
     public boolean addSong(Song song) {
         if (getSongByName(song.getSongName()) != null) {
             return false;
@@ -41,7 +41,6 @@ public class Playlist implements SongList {
         return true;
     }
 
-    @Override
     public boolean removeSong(String songName){
         Song find = getSongByName(songName);
         if (find != null) {

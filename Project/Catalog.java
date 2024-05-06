@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Catalog {
+public class Catalog implements SongList {
     protected ArrayList<Song> songCatalog;
     private Set<String> genreList;
 
@@ -40,7 +40,7 @@ public class Catalog {
         }
         return null;
     }
-    
+
     public void displayGenre() {
         // If genre was already printed, do not reprint
         for (String genre : genreList) {
