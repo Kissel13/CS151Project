@@ -194,6 +194,7 @@ public class Main extends Playlist{
                 }
                 else if (exitKey.equals("no")) {
                     System.out.println("Exit Canceled");
+                    System.out.println();
                 }
                 else {
                     System.out.println("Error: Input Not Accepted");

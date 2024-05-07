@@ -24,12 +24,27 @@ public class Catalog implements SongList {
         genreList.add(song4.getGenre());
 	    Song song5 = new Song("Needed Me", "Rihanna", "R&B", "Anti", 3.09);
         genreList.add(song5.getGenre());
-	        
+        Song song6 = new Song("Mr. Brightside", "The Killers", "Alternative", "Hot Fuss", 3.43);
+	    genreList.add(song6.getGenre());
+        Song song7 = new Song("Levitating", "Dua Lipa", "Pop", "Future Nostalgia", 3.23);
+        genreList.add(song7.getGenre());
+        Song song8 = new Song("CAN'T SAY", "Travis Scott", "Rap", "ASTROWORLD", 3.18);
+        genreList.add(song8.getGenre());
+        Song song9 = new Song("PRIDE", "Kendrick Lamar", "Rap", "DAMN.", 4.35);
+        genreList.add(song9.getGenre());
+        Song song10 = new Song("Kill Bill", "SZA", "R&B", "SOS", 2.34);
+        genreList.add(song10.getGenre());
+
 	    songCatalog.add(song1);
 	    songCatalog.add(song2);
         songCatalog.add(song3);
         songCatalog.add(song4);
 	    songCatalog.add(song5);
+        songCatalog.add(song6);
+        songCatalog.add(song7);
+        songCatalog.add(song8);
+        songCatalog.add(song9);
+        songCatalog.add(song10);
     }
 
     public Song getSongByName(String songName) {
