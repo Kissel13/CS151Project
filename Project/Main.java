@@ -10,6 +10,7 @@ public class Main extends Playlist{
         AccountManager manager = new AccountManager();
         Catalog catalog = new Catalog();
         boolean loginLock = true;
+        boolean userNameLock = true;
         boolean signupLock = true;
         boolean playListLock = true;
         boolean userLock = true;
@@ -46,6 +47,17 @@ public class Main extends Playlist{
                 System.out.println("Please Enter A Name and Password:");
                 System.out.print("Username: ");
                 String newUser = scnr.next();
+                while (userNameLock) {
+                    currentUser.setAccountName(newUser);
+                    if (manager.accountVerify(currentUser)) {
+                        System.out.println("Username Already Exists");
+                        System.out.print("Username: ");
+                        newUser = scnr.next();
+                    }
+                    else {
+                        userNameLock = false;
+                    }
+                }
                 System.out.println();
                 while (signupLock) {
                     System.out.println("Password must but at least 6 characters long.");
@@ -53,8 +65,7 @@ public class Main extends Playlist{
                     String newPass = scnr.next();
                     System.out.println();
                     if (newPass.length() >= 6) {
-                        //currentUser = new Account(newUser, newPass);
-                        currentUser.setAccountName(newUser);
+                        //currentUser.setAccountName(newUser);
                         currentUser.setPassword(newPass);
                         manager.addAccount(currentUser);
                         System.out.println("Thank You For Choosing MusicCatalog");
