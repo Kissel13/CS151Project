@@ -85,7 +85,7 @@ public class Playlist implements SongList {
             String line = reader.readLine();
             while (line != null && !line.isEmpty()) {
                 String[] part = line.split(", ");
-                playlist.addSong(new Song(part[0], part[1], part[3], part[2], Double.parseDouble(part[4])));
+                playlist.addSong(new Song(part[0], part[1], part[2], part[3], Double.parseDouble(part[4])));
                 line = reader.readLine();
             }
             reader.close();

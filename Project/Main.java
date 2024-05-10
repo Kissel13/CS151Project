@@ -193,6 +193,10 @@ public class Main extends Playlist{
                     case "return" :
                         System.out.println();
                         break;
+
+                    default : 
+                        System.out.println("Invalid Input");
+                        break;
                 }
             }
             else if (input.equals("exit")) {

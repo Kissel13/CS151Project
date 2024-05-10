@@ -54,8 +54,8 @@ public class Song {
         this.songLength = length;
     }
 
+    @Override
     public String toString() {
         return songName + ", " + artist + ", " + album + ", " + genre + ", " + songLength;
     }
-
 }
