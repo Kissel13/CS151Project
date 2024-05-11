@@ -23,7 +23,6 @@ public class Main extends Playlist{
                     String userName = scnr.next();
                     System.out.print("Password: ");
                     String passWord = scnr.next();
-                    //currentUser = new Account(userName, passWord);
                     currentUser.setAccountName(userName);
                     currentUser.setPassword(passWord);
                     // Search AccountManager for match on username
@@ -44,6 +43,7 @@ public class Main extends Playlist{
                 break;
                 
             case "signup":
+                //Create a new account to add to the file
                 System.out.println("Please Enter A Name and Password:");
                 System.out.print("Username: ");
                 String newUser = scnr.next();
@@ -108,6 +108,7 @@ public class Main extends Playlist{
                     System.out.println();
                     
                 } else if (catalogInput.equals("full")) {
+                    //Print full catalog
                     System.out.println();
                     System.out.println("MusicCatalog Songs: ");
                     System.out.println();
