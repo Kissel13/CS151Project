@@ -52,10 +52,15 @@ public class Catalog implements SongList {
     }
     
     public void displayGenreCatalog(String genreInput) {
+        int songsFound = 0;
         for (int i = 0; i < songCatalog.size(); i++) {
             if (songCatalog.get(i).getGenre().equalsIgnoreCase(genreInput)) {
                 System.out.println(songCatalog.get(i).toString());
+                songsFound++;
             }
+        }
+        if (songsFound == 0) {
+            System.out.println("No songs found under this genre");
         }
     }
 
